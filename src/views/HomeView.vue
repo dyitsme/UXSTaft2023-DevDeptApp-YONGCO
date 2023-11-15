@@ -1,10 +1,11 @@
 <script setup>
-// import Navbar from '../components/Navbar.vue'
+import Navbar from '../components/Navbar.vue'
 import Card from '../components/Card.vue'
-// import Footer from '../components/Navbar.vue'
+import Footer from '../components/Footer.vue'
 import { ref } from 'vue'
 import Clipboard from 'clipboard'
 import isUrlHttp from 'is-url-http'
+import 'boxicons'
 
 
 const originalLink = ref('')
@@ -47,23 +48,8 @@ function shortenLink() {
 
 }
 
-function copyToClipboard(shortLink) {
-  const clipboard = new Clipboard('.copy-btn', {
-    text: function () {
-      return shortLink;
-    }
-  });
-
-  clipboard.on('success', function (e) {
-    console.log('Copied to clipboard');
-    e.clearSelection();
-  });
-
-  clipboard.on('error', function (e) {
-    console.error('Unable to copy to clipboard');
-  });
-
-  clipboard.destroy();
+function copyToClipboard(short) {
+    navigator.clipboard.writeText(short)
 }
 
 function removeCard(link) {
@@ -73,14 +59,55 @@ function removeCard(link) {
 </script>
 
 <template>
-    <input type="text" v-model="originalLink">
-    <button @click="shortenLink">Shorten</button>
+    <Navbar/>
+    <div class="intro">
+      <div class="intro-text">
+        <h2>Create a Short URL!</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis leo ipsum, dictum et est ut.</p>
+      </div>
+      <img src="../assets/img/man-working-on-laptop.svg">
+    </div>
+    <div class="input-group">
+      <input class="input-link" type="text" v-model="originalLink" placeholder="Paste a link here...">
+      <button class="shorten-btn" @click="shortenLink">Shorten</button>
+    </div>
     <div v-for="(link, index) in links" :key="index">
       <Card :long="link.long" :short="link.short" @copy="copyToClipboard(link.short)" @remove="removeCard(link)"/>
-      <!-- <div>
-        {{ link.long }} {{ link.short }} 
-        <button @click="copyToClipboard(link.short)">Copy to clipboard</button>
-        <button @click="removeCard(link)">Delete</button>
-      </div> -->
     </div>
+    <Footer/>
 </template>
+
+<style scoped>
+@import '../assets/main.css';
+.intro {
+  display: flex;
+}
+.intro h2 {
+  font-size: 4rem;
+}
+.intro p {
+  font-size: 1.5rem;
+}
+.intro img {
+  max-width: 428px;
+  max-height: 428px;
+}
+.input-group {
+  display: flex;
+}
+.input-link {
+  font-size: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+.shorten-btn {
+  background-color: var(--primary-green);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  min-height: 71px;
+  min-width: 210px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+</style>
