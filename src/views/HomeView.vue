@@ -81,24 +81,33 @@ function removeCard(link) {
 @import '../assets/main.css';
 .intro {
   display: flex;
+  color: var(--black);
 }
-.intro h2 {
+h2 {
   font-size: 4rem;
 }
-.intro p {
+p {
   font-size: 1.5rem;
 }
-.intro img {
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 428px;
   max-height: 428px;
 }
 .input-group {
   display: flex;
+  justify-content: center;
 }
 .input-link {
   font-size: 1.5rem;
   border-radius: 10px;
-  border: 1px solid black;
+  border: 2px solid var(--grey);
+  min-width: 960px;
+  margin-right: 20px;
+  padding-left: 20px;
+  padding-right: 0px;
 }
 .shorten-btn {
   background-color: var(--primary-green);
