@@ -1,14 +1,14 @@
 <script setup>
 
 const { long, short } = defineProps(['long', 'short'])
-const emit = defineEmits()
+const emit = defineEmits(['copy', 'delete'])
 
 function copyToClipBoard() {
   emit('copy')
 }
 
 function removeCard() {
-  emit('delete')
+  emit('remove')
 }
 </script>
 <template>
