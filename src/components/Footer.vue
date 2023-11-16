@@ -5,10 +5,9 @@ import boxicons from 'boxicons'
 <template>
   <footer class="footer">
     <div class="icons">
-      <a href="#"><box-icon name='facebook-square' type='logo' color="white" size="md"></box-icon></a>
-      <a href="#"><box-icon name='instagram' type='logo' color="white" size="md"></box-icon></a>
-      <a href="#"><box-icon name='linkedin-square' type='logo' color="white" size="md"></box-icon></a>
-      <a href="#"><box-icon name='github' type='logo' color="white" size="md"></box-icon></a>
+      <a href="https://www.instagram.com/denzelyongco/"><box-icon name='instagram' type='logo' color="white" size="md"></box-icon></a>
+      <a href="https://www.linkedin.com/in/denzel-yongco/"><box-icon name='linkedin-square' type='logo' color="white" size="md"></box-icon></a>
+      <a href="https://github.com/dyitsme"><box-icon name='github' type='logo' color="white" size="md"></box-icon></a>
     </div>
     <div class="love">
       Made with ♥ by Denzel Yongco
@@ -17,14 +16,14 @@ import boxicons from 'boxicons'
 </template>
 
 <style scoped>
-@import '../assets/main.css';
  .footer {
   display: flex;
   flex-direction: column;
   background-color: var(--dark-grey);
   align-items: center;
-  justify-content: center;
-  bottom: 0;
+  justify-content: space-around;  
+  margin-top: auto;
+  min-height: 10vh;
  }
  .love {
   color: var(--white);

@@ -10,6 +10,7 @@ import 'boxicons'
 
 const originalLink = ref('')
 const links = ref([])
+const isNotValid = ref(false)
 
 
 function shortenLink() {
@@ -36,13 +37,14 @@ function shortenLink() {
 
       // reset form
       originalLink.value = ''
+      isNotValid.value = false
   })
     .catch(err => {
       console.error(err);
     })
   }
   else {
-    console.log("invalid url or no url provided")
+      isNotValid.value = true
   }
 
 
@@ -62,8 +64,8 @@ function removeCard(link) {
     <Navbar/>
     <div class="intro">
       <div class="intro-text">
-        <h2>Create a Short URL!</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis leo ipsum, dictum et est ut.</p>
+        <h2>Create a Short URL</h2>
+        <p>Shorten your long links to make it easy on other people's eyes.</p>
       </div>
       <img src="../assets/img/man-working-on-laptop.svg">
     </div>
@@ -71,6 +73,7 @@ function removeCard(link) {
       <input class="input-link" type="text" v-model="originalLink" placeholder="Paste a link here...">
       <button class="shorten-btn" @click="shortenLink">Shorten</button>
     </div>
+    <div class="not-valid" v-if="isNotValid">Invalid url or no url provided</div>
     <div v-for="(link, index) in links" :key="index">
       <Card :long="link.long" :short="link.short" @copy="copyToClipboard(link.short)" @remove="removeCard(link)"/>
     </div>
@@ -82,6 +85,7 @@ function removeCard(link) {
 .intro {
   display: flex;
   color: var(--black);
+  padding: 2rem 10rem;
 }
 h2 {
   font-size: 4rem;
@@ -96,6 +100,8 @@ img {
   max-width: 428px;
   max-height: 428px;
 }
+
+
 .input-group {
   display: flex;
   justify-content: center;
@@ -118,5 +124,24 @@ img {
   min-width: 210px;
   font-size: 1.5rem;
   cursor: pointer;
+}
+
+.shorten-btn:hover {
+  background-color: var(--active-green);
+  color: var(--white);
+  transition: 0.25s;
+}
+.shorten-btn:active {
+
+  background-color: #34D399;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+.not-valid {
+  display: flex;
+  color: var(--red);
+  font-size: 1.5rem;
+  justify-content: center;
 }
 </style>
