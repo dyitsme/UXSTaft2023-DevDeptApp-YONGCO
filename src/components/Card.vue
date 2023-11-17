@@ -38,7 +38,7 @@ function removeCard() {
   font-size: 1.5rem;
   background-color: var(--light-grey);
   justify-content: space-around;
-  width: 1449px;
+  width: 1249px;
   border-radius: 10px;
   margin-top: 30px;
   margin-bottom: 30px;

@@ -24,6 +24,7 @@ import boxicons from 'boxicons'
   justify-content: space-around;  
   margin-top: auto;
   min-height: 10vh;
+  /* width: 100vw; */
  }
  .love {
   color: var(--white);

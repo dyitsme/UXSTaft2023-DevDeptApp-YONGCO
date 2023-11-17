@@ -69,13 +69,15 @@ function removeCard(link) {
       </div>
       <img src="../assets/img/man-working-on-laptop.svg">
     </div>
-    <div class="input-group">
-      <input class="input-link" type="text" v-model="originalLink" placeholder="Paste a link here...">
-      <button class="shorten-btn" @click="shortenLink">Shorten</button>
-    </div>
-    <div class="not-valid" v-if="isNotValid">Invalid url or no url provided</div>
-    <div v-for="(link, index) in links" :key="index">
-      <Card :long="link.long" :short="link.short" @copy="copyToClipboard(link.short)" @remove="removeCard(link)"/>
+    <div class="io-container">
+      <div class="input-group">
+        <input class="input-link" type="text" v-model="originalLink" placeholder="Paste a link here...">
+        <button class="shorten-btn" @click="shortenLink">Shorten</button>
+      </div>
+      <div class="not-valid" v-if="isNotValid">Invalid url or no url provided</div>
+      <div v-for="(link, index) in links" :key="index">
+        <Card :long="link.long" :short="link.short" @copy="copyToClipboard(link.short)" @remove="removeCard(link)"/>
+      </div>
     </div>
     <Footer/>
 </template>
@@ -143,5 +145,9 @@ img {
   color: var(--red);
   font-size: 1.5rem;
   justify-content: center;
+}
+
+.io-container {
+  padding-bottom: 10rem;
 }
 </style>
